@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta
+      name="description"
+      content="Browse, search, filter and sort a live product catalogue powered by the DummyJSON Products API."
+    />
+    <title>Product Explorer — DummyJSON Catalogue</title>
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Warm up the API origin so the first product request skips DNS + TLS setup. -->
+    <link rel="preconnect" href="https://dummyjson.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.dummyjson.com" />
+  </head>
+  <body>
+    <a class="skip-link" href="#results">Skip to products</a>
+
+    <header class="site-header">
+      <div class="site-header__inner container">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true">PE</span>
+          <span class="brand__text">
+            <strong>Product Explorer</strong>
+            <small>DummyJSON catalogue</small>
+          </span>
+        </div>
+        <p class="site-header__meta">
+          <span class="status-dot" aria-hidden="true"></span>
+          Live data from
+          <a href="https://dummyjson.com/docs/products" target="_blank" rel="noreferrer noopener">
+            DummyJSON
+          </a>
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero__copy">
+            <p class="hero__eyebrow">Product catalogue</p>
+            <h1 id="hero-title">Find the right product, faster.</h1>
+            <p class="hero__lede">
+              Search, filter and sort a live product catalogue powered by the DummyJSON API.
+            </p>
+          </div>
+          <dl class="hero__stats">
+            <div class="stat">
+              <dt>Products</dt>
+              <dd id="stat-total">—</dd>
+            </div>
+            <div class="stat">
+              <dt>Categories</dt>
+              <dd id="stat-categories">—</dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+
+      <!-- Full-bleed band so the sticky background spans the viewport, not just
+           the centred content column. -->
+      <div class="toolbar-bar">
+        <div class="container">
+          <div id="toolbar-mount"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <section id="results" class="results" aria-labelledby="results-heading" tabindex="-1">
+          <h2 id="results-heading" class="visually-hidden">Products</h2>
+          <div id="results-summary" class="results-summary"></div>
+          <div id="results-mount"></div>
+          <div id="pagination-mount"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner container">
+        <span>Product Explorer — front-end practical task</span>
+        <span>Vanilla JavaScript · Vite · DummyJSON Products API</span>
+      </div>
+    </footer>
+
+    <!-- Single polite live region for all status announcements. -->
+    <p id="announcer" class="visually-hidden" role="status" aria-live="polite"></p>
+
+    <noscript>
+      <p class="noscript">
+        This catalogue loads its data from the DummyJSON API at runtime, so JavaScript needs to be
+        enabled to browse products.
+      </p>
+    </noscript>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

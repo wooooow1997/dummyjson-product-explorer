@@ -1,0 +1,132 @@
+/**
+ * Loading, empty and error feedback: status panels, skeletons, spinner.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Status panels (error / empty)
+ * ------------------------------------------------------------------ */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-12) var(--space-6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  text-align: center;
+}
+
+.panel--empty {
+  border-style: dashed;
+}
+
+.panel--error {
+  border-color: var(--danger-200);
+  background: var(--danger-50);
+}
+
+.panel__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  background: var(--brand-50);
+  color: var(--brand-600);
+}
+
+.panel--error .panel__icon {
+  background: #fee2e2;
+  color: var(--danger-700);
+}
+
+.panel__title {
+  color: var(--ink-900);
+  font-size: var(--text-lg);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.panel__message {
+  max-width: 34rem;
+  color: var(--ink-600);
+  font-size: var(--text-sm);
+}
+
+/* ------------------------------------------------------------------ *
+ * Skeletons
+ * ------------------------------------------------------------------ */
+
+.card--skeleton {
+  pointer-events: none;
+}
+
+.card--skeleton:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.skeleton-block,
+.skeleton-line {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink-100);
+}
+
+.skeleton-line {
+  display: block;
+  height: 11px;
+  border-radius: var(--radius-full);
+}
+
+.skeleton-line--xs {
+  width: 32%;
+  height: 8px;
+}
+
+.skeleton-line--sm {
+  width: 55%;
+}
+
+.skeleton-line--md {
+  width: 45%;
+  height: 16px;
+}
+
+.skeleton-line--lg {
+  width: 85%;
+  height: 14px;
+}
+
+.skeleton-block::after,
+.skeleton-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--ink-200);
+  border-top-color: var(--brand-600);
+  border-radius: var(--radius-full);
+  animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
